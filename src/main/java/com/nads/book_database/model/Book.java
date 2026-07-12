@@ -2,10 +2,17 @@ package com.nads.book_database.model;
 
 import java.util.UUID;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+
 public class Book {
+    @NotBlank(message = "Title cannot be blank")
     private String title;
+    @NotBlank(message = "Author cannot be blank")
     private String author;
+    @Min(value = 1900, message = "Publish year must be equal to or greater than 1900")
     private int publishYear;
+    @NotBlank(message = "Genre cannot be blank")
     private String genre;
     private UUID id;
 

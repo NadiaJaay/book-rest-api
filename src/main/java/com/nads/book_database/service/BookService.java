@@ -47,9 +47,14 @@ public class BookService {
     }
 
     //Delete
-    public void deleteBook(UUID id) {
+    public Boolean deleteBook(UUID id) {
         Book deleteBook = getBookById(id);
+        if (deleteBook == null) {
+            return false;
+        }
+
         books.remove(deleteBook);
+        return true;
 
     }
 }
