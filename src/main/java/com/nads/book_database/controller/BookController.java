@@ -9,6 +9,7 @@ import com.nads.book_database.service.BookService;
 import jakarta.validation.Valid;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
@@ -37,8 +38,8 @@ public class BookController {
     }
 
     @GetMapping("/{id}") // ResponseEntity allows us to control the HTTP status and response body.
-    public ResponseEntity<Book> getBookById(@PathVariable("id") UUID id) {
-        Book book = bookService.getBookById(id);
+    public ResponseEntity<Optional<Book>> getBookById(@PathVariable("id") UUID id) {
+        Optional<Book> book = bookService.getBookById(id);
         if (book == null) {
             return ResponseEntity.notFound().build();
         }

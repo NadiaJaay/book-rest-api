@@ -2,9 +2,12 @@ package com.nads.book_database.model;
 
 import java.util.UUID;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
+@Entity //Class should be stored in a DB table
 public class Book {
     @NotBlank(message = "Title cannot be blank")
     private String title;
@@ -14,6 +17,7 @@ public class Book {
     private int publishYear;
     @NotBlank(message = "Genre cannot be blank")
     private String genre;
+    @Id
     private UUID id;
 
 
